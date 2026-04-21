@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UEN Coffee Shop | Form</title>
+    <title>UEN Coffee Shop | Order Online</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -16,7 +16,35 @@
       href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Work+Sans:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/form.css" />
+    <link rel="stylesheet" href="css/infor.css" />
+    <style>
+      .order-panel {
+        background-color: var(--coffee-800);
+        border-radius: 1rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+      .search-box {
+        background: var(--coffee-900);
+        border: 1px solid var(--coffee-700);
+        color: #e8e2dc;
+        border-radius: 0.7rem;
+      }
+      .search-box:focus {
+        border-color: var(--coffee-500);
+        box-shadow: 0 0 0 0.2rem rgba(212, 169, 108, 0.2);
+        outline: none;
+      }
+      .btn-order {
+        background: var(--coffee-500);
+        border: none;
+        color: var(--coffee-900);
+        font-weight: 600;
+      }
+      .btn-order:hover {
+        background: var(--coffee-400);
+        color: var(--coffee-900);
+      }
+    </style>
   </head>
   <body>
     <nav
@@ -28,14 +56,14 @@
           class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#formNav"
-          aria-controls="formNav"
+          data-bs-target="#orderNav"
+          aria-controls="orderNav"
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="formNav">
+        <div class="collapse navbar-collapse" id="orderNav">
           <ul class="navbar-nav ms-auto gap-lg-2">
             <li class="nav-item">
               <a class="nav-link" href="index.html">Home</a>
@@ -44,13 +72,13 @@
               <a class="nav-link" href="infor.html">Coffee Info</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="order.html">Order Online</a>
+              <a class="nav-link active" href="order.html">Order Online</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="form.html">Form</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="giftcard.html">Gift Cards</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="form.html">Form</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="location.html">Location</a>
@@ -61,86 +89,35 @@
     </nav>
 
     <header class="page-intro py-5">
-      <div class="container text-center text-white">
-        <h1 class="display-6 fw-bold mb-2">Check Your Information</h1>
-        <p class="lead mb-0">
-          Fill this form and validate your details instantly.
-        </p>
+      <div class="container text-white text-center">
+        <h1 class="display-6 fw-bold mb-3">Order Online</h1>
+        <p class="lead mb-0">Search and order your favorite coffees</p>
       </div>
     </header>
 
     <main class="py-5">
       <div class="container">
-        <section class="form-panel p-4 p-md-5 mx-auto">
-          <form id="customerForm" novalidate>
-            <div class="mb-3">
-              <label for="fullName" class="form-label">Full Name</label>
+        <section class="order-panel p-4 p-md-5">
+          <div class="mb-4">
+            <div class="input-group">
+              <span class="input-group-text">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg>
+              </span>
               <input
                 type="text"
-                class="form-control"
-                id="fullName"
-                name="fullName"
-                placeholder="e.g. Ukesh Karki"
-                required
+                id="coffeeSearch"
+                class="form-control search-box"
+                placeholder="Search coffees..."
+                aria-label="Search coffees"
               />
-              <div class="invalid-feedback">
-                Please enter at least 3 letters for your name.
-              </div>
             </div>
-
-            <div class="mb-3">
-              <label for="email" class="form-label">Email Address</label>
-              <input
-                type="email"
-                class="form-control"
-                id="email"
-                name="email"
-                placeholder="you@example.com"
-                required
-              />
-              <div class="invalid-feedback">Enter a valid email address.</div>
-            </div>
-
-            <div class="mb-3">
-              <label for="phone" class="form-label">Phone Number</label>
-              <input
-                type="tel"
-                class="form-control"
-                id="phone"
-                name="phone"
-                placeholder="10-digit number"
-                required
-              />
-              <div class="invalid-feedback">Phone must contain 10 digits.</div>
-            </div>
-
-            <div class="mb-3">
-              <label for="coffeeChoice" class="form-label"
-                >Favorite Coffee</label
-              >
-              <select
-                class="form-select"
-                id="coffeeChoice"
-                name="coffeeChoice"
-                required
-              >
-                <option value="">Select one</option>
-                <option>Espresso</option>
-                <option>Latte</option>
-                <option>Cappuccino</option>
-                <option>Mocha</option>
-                <option>Americano</option>
-                <option>Cold Brew</option>
-              </select>
-              <div class="invalid-feedback">Please select a coffee option.</div>
-            </div>
-
-            <button type="submit" class="btn btn-dark w-100 py-2 fw-semibold">
-              Validate Form
-            </button>
-          </form>
-
-          <div class="alert mt-4 d-none" role="alert" id="formMessage"></div>
+          </div>
+          <div class="row g-3" id="orderList"></div>
+          <div id="noResults" class="text-center text-muted py-4" style="display: none;">
+            <p class="mb-0">No coffees found matching your search.</p>
+          </div>
         </section>
       </div>
     </main>
@@ -211,6 +188,6 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-    <script src="js/form.js"></script>
+    <script src="js/order.js"></script>
   </body>
 </html>
